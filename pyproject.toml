@@ -1,0 +1,26 @@
+[tool.pytest.ini_options]
+testpaths = "tests"
+addopts = "-vv --cov-report=term-missing --cov=app"
+
+[tool.poetry]
+name = "semparar-log-explorer"
+version = "0.1.0"
+description = ""
+authors = ["Vinicius Chan <viniciuschann@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.dev-dependencies]
+# Development dependencies
+black = "*"
+coverage = "*"
+isort = "*"
+pytest = "*"
+pytest-black = "*"
+pytest-cov = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
