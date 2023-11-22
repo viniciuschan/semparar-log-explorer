@@ -20,5 +20,3 @@ make install
 ```sh
 make run
 ```
-
-test
