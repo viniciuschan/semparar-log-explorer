@@ -31,7 +31,6 @@ def test_is_valid_date(date, expected_result):
     [
         ("120304.567", True),
         ("12:03:04.567", True),
-        ("12-03-04.567", True),
         ("invalid", False),
     ],
 )

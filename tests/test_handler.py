@@ -18,7 +18,4 @@ def test_handle_file():
 
         with open(result_path, "r") as file:
             result_content = file.read().replace("\n", "")
-        assert (
-            result_content
-            == "{'date': '20230711', 'time': '140613.095', 'code': '03', 'tag': '', 'plate': 'GIS6207', 'rejection_code': ''}"
-        )
+        assert result_content == "[L-1] 20230711 140613.095 03  GIS6207 "
