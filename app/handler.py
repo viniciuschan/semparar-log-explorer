@@ -11,8 +11,11 @@ def handle_file(log_path: str, result_path: str = RESULT_PATH) -> bool:
             data = get_parsed_data(content)
 
             with open(result_path, "a") as result_file:
-                for entry in data:
-                    result_file.write(f"{entry}\n")
+                for idx, entry in enumerate(data):
+                    line_number = f"[L-{idx+1}]"
+                    line = " ".join(item for item in entry.values())
+                    result_file.write(f"{line_number} {line}\n")
+
     except Exception as exc:
         print(f"An error occurred while processing {log_path}: {exc}")
         return False
