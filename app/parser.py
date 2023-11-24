@@ -21,7 +21,7 @@ def _get_result_body() -> dict:
     }
 
 
-def _add_row_canceled_error_details(row_data: dict) -> dict:
+def _add_canceled_error_details(row_data: dict) -> dict:
     has_cancel_error = row_data["code"] == "99"
     if has_cancel_error and row_data["rejection_code"] in PAYMENT_CANCEL_SUB_ERRORS:
         row_data[
@@ -29,9 +29,9 @@ def _add_row_canceled_error_details(row_data: dict) -> dict:
         ] += (
             f" | {PAYMENT_CANCEL_SUB_ERRORS[row_data['rejection_code']]['description']}"
         )
-        row_data["action"] = {
-            PAYMENT_CANCEL_SUB_ERRORS[row_data["rejection_code"]]["action"]
-        }
+        row_data["action"] = PAYMENT_CANCEL_SUB_ERRORS[row_data["rejection_code"]][
+            "action"
+        ]
     return row_data
 
 
@@ -40,7 +40,7 @@ def _add_row_error_details(row_data: dict) -> dict:
         row_data["description"] = EVA_ERROR_CODES[row_data["code"]]["description"]
         row_data["action"] = EVA_ERROR_CODES[row_data["code"]]["action"]
 
-    row_data = _add_row_canceled_error_details(row_data)
+    row_data = _add_canceled_error_details(row_data)
     return row_data
 
 
